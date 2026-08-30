@@ -11,6 +11,7 @@
             text-align: center;
             font-family: Arial, sans-serif;
             background: pink;
+            padding-bottom: 50px;
         }
 
         h1 {
@@ -20,6 +21,7 @@
 
         p {
             font-size: 25px;
+            font-weight: bold;
         }
 
         .cats {
@@ -58,29 +60,51 @@
 
     <h1>🐱 FISO'S CAT EMPIRE 🐱</h1>
 
-    <p id="text">ოთხი კატა. ნული მიზეზი. 💀</p>
+    <p id="text">დააჭირე რომელიმე ფისოს 🐈</p>
 
     <div class="cats">
-        <img src="1000019381.jpg" onclick="catClick()">
-        <img src="1000044134.jpg" onclick="catClick()">
-        <img src="1000128630.jpg" onclick="catClick()">
-        <img src="1000152956.jpg" onclick="catClick()">
+
+        <img src="1000019381.jpg" onclick="cat1Click()">
+
+        <img src="1000044134.jpg" onclick="cat2Click()">
+
+        <img src="1000128630.jpg" onclick="cat3Click()">
+
+        <img src="1000152956.jpg" onclick="cat4Click()">
+
     </div>
 
-    <button onclick="dontClick()">არ დააჭირო 😈</button>
+    <button onclick="dontClick()">აქ არ დააჭირო 😈</button>
 
     <script>
-        function catClick() {
+
+        function cat1Click() {
             document.getElementById("text").innerHTML =
-                "მიააააუ 😼 შენ კატას დააჭირე!";
+                "ეს ყველაზე ნაზი და ფუმფულა ფისოა 🥺🐈";
+        }
+
+        function cat2Click() {
+            document.getElementById("text").innerHTML =
+                "ეს ფისო რესტორანში მუშაობს, მშვენიერი დეგუსტატორია 🍽️🐈";
+        }
+
+        function cat3Click() {
+            document.getElementById("text").innerHTML =
+                "ეს ფისო ყველაზე უჟმური, მაგრამ ცხელია 😂🔥";
+        }
+
+        function cat4Click() {
+            document.getElementById("text").innerHTML =
+                "ეს ფისო ფოტოგენური ეშმაკია 😈📸🐈";
         }
 
         function dontClick() {
             document.body.style.background = "red";
 
             document.getElementById("text").innerHTML =
-                "გითხარი არ დააჭირო მეთქი 😭💀";
+                "გითხარი არ დააჭირო მეთქი 😭💀 ახლა საჭმელი უყიდე";
         }
+
     </script>
 
 </body>
