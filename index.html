@@ -1,21 +1,88 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="ka">
 <head>
-    <title>ჩემი კატები</title>
+    <meta charset="UTF-8">
+    <title>Fiso 🐈</title>
+
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: pink;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 40px;
+        }
+
+        p {
+            font-size: 25px;
+        }
+
+        .cats {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 30px;
+        }
+
+        .cats img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 25px;
+            border: 5px solid white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cats img:hover {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        button {
+            font-size: 22px;
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>გამარჯობა, ფისო 🐈‍⬛🐈</h1>
 
-    <p id="text">დააჭირე ღილაკს თუ გიყვარს კატები.</p>
+    <h1>🐱 FISO'S CAT EMPIRE 🐱</h1>
 
-    <button onclick="changeText()">მიაუუუუუუუუუუ🐈‍⬛🐈</button>
+    <p id="text">ოთხი კატა. ნული მიზეზი. 💀</p>
+
+    <div class="cats">
+        <img src="1000019381.jpg" onclick="catClick()">
+        <img src="1000044134.jpg" onclick="catClick()">
+        <img src="1000128630.jpg" onclick="catClick()">
+        <img src="1000152956.jpg" onclick="catClick()">
+    </div>
+
+    <button onclick="dontClick()">არ დააჭირო 😈</button>
 
     <script>
-        function changeText() {
-            document.getElementById("text").innerText =
-                "რატომ დააჭირე 😭 ახლა აჭამე 🍗.";
+        function catClick() {
+            document.getElementById("text").innerHTML =
+                "მიააააუ 😼 შენ კატას დააჭირე!";
+        }
+
+        function dontClick() {
+            document.body.style.background = "red";
+
+            document.getElementById("text").innerHTML =
+                "გითხარი არ დააჭირო მეთქი 😭💀";
         }
     </script>
+
 </body>
 </html>
+```
