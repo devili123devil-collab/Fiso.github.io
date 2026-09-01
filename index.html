@@ -1,3 +1,4 @@
+
 ```html
 <!DOCTYPE html>
 <html lang="ka">
@@ -32,6 +33,12 @@
             padding: 30px;
         }
 
+        .cat-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .cats img {
             width: 250px;
             height: 250px;
@@ -52,61 +59,121 @@
             border-radius: 15px;
             border: none;
             cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .vote-count {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #results {
+            margin-top: 40px;
+            font-size: 25px;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>🐱 ტკბილეულის ქარხანა🐱</h1>
+    <h1>🐱 ტკბილეულის ქარხანა 🐱</h1>
 
     <p id="text">რომელი კატის არომატია თქვენთვის ფავორიტი? 🐈</p>
 
     <div class="cats">
 
-        <img src="1000003483.jpg" onclick="cat1Click()">
+        <div class="cat-box">
+            <img src="1000003483.jpg" onclick="selectCat(1)">
+            <div class="vote-count" id="count1">ფისო №1 — 0 ხმა</div>
+        </div>
 
-        <img src="1000004685.jpg" onclick="cat2Click()">
+        <div class="cat-box">
+            <img src="1000004685.jpg" onclick="selectCat(2)">
+            <div class="vote-count" id="count2">ფისო №2 — 0 ხმა</div>
+        </div>
 
-        <img src="1000015855.jpg" onclick="cat3Click()">
+        <div class="cat-box">
+            <img src="1000015855.jpg" onclick="selectCat(3)">
+            <div class="vote-count" id="count3">ფისო №3 — 0 ხმა</div>
+        </div>
 
-        <img src="1000019381.jpg" onclick="cat4Click()">
+        <div class="cat-box">
+            <img src="1000019381.jpg" onclick="selectCat(4)">
+            <div class="vote-count" id="count4">ფისო №4 — 0 ხმა</div>
+        </div>
 
     </div>
 
-    <button onclick="dontClick()">ხმა მიეცით </button>
+    <button onclick="vote()">🗳️ ხმა მიეცით</button>
+
+    <div id="results">
+        📊 შედეგები გამოჩნდება აქ
+    </div>
 
     <script>
 
-        function cat1Click() {
+        let selectedCat = 0;
+
+        let votes = JSON.parse(localStorage.getItem("catVotes")) || {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0
+        };
+
+        function selectCat(cat) {
+
+            selectedCat = cat;
+
             document.getElementById("text").innerHTML =
-                "ფისო №1🐈";
+                "თქვენ აირჩიეთ ფისო №" + cat + " 🐈";
+
         }
 
-        function cat2Click() {
+        function vote() {
+
+            if (selectedCat === 0) {
+
+                document.getElementById("text").innerHTML =
+                    "ჯერ აირჩიეთ ფისო 😹";
+
+                return;
+            }
+
+            votes[selectedCat]++;
+
+            localStorage.setItem("catVotes", JSON.stringify(votes));
+
+            updateResults();
+
             document.getElementById("text").innerHTML =
-                "ფისო №2🐈";
+                "მიაუ! თქვენი ხმა ჩაითვალა! 🩷🩵";
         }
 
-        function cat3Click() {
-            document.getElementById("text").innerHTML =
-                "ფისო №3🐈";
+        function updateResults() {
+
+            document.getElementById("count1").innerHTML =
+                "ფისო №1 — " + votes[1] + " ხმა";
+
+            document.getElementById("count2").innerHTML =
+                "ფისო №2 — " + votes[2] + " ხმა";
+
+            document.getElementById("count3").innerHTML =
+                "ფისო №3 — " + votes[3] + " ხმა";
+
+            document.getElementById("count4").innerHTML =
+                "ფისო №4 — " + votes[4] + " ხმა";
+
         }
 
-        function cat4Click() {
-            document.getElementById("text").innerHTML =
-                "ფისო №4🐈";
-        }
+        updateResults();
 
-                 function dontClick() {
-                      document.body.style.background = "turquoise";
-
-             document.getElementById("text").innerHTML =
-                  "მიაუ ხმის მიცემისთვის 🩷🩵";
-}
     </script>
 
 </body>
 </html>
 ```
+
 
